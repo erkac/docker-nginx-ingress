@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  nginx-ingress:
+    build: .
+    container_name: nginx-ingress
+    restart: always
+    # command: |
+    #     --web \
+    #     --docker \
+    #     --docker.watch \
+    #     --docker.exposedbydefault=false
+    ports:
+        - 81:80
+        - 4433:443
+    # volumes:      
+    #     - ./traefik.toml:/traefik.toml
+    #     - ./acme.json:/acme.json
+    #     - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+        - traefik
+networks:
+  traefik:
+    name: traefik
